@@ -6,14 +6,17 @@ import { replaceSendMessageHandlebars, type SendMessagePayload } from '@logto/co
 import type { AwsSesConfig, Template } from './types.js';
 
 export const makeClient = (
-  accessKeyId: string,
-  secretAccessKey: string,
+  accessKeyId: string | undefined,
+  secretAccessKey: string | undefined,
   region: string
 ): SESv2Client => {
-  const credentials: AwsCredentialIdentity = {
-    accessKeyId,
-    secretAccessKey,
-  };
+  const credentials: AwsCredentialIdentity | undefined =
+    accessKeyId && secretAccessKey
+      ? {
+          accessKeyId,
+          secretAccessKey,
+        }
+      : undefined;
 
   return new SESv2Client({ credentials, region });
 };

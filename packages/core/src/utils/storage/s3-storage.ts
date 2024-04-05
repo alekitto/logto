@@ -12,8 +12,8 @@ const getRegionFromEndpoint = (endpoint?: string) => {
 
 type BuildS3StorageParameters = {
   bucket: string;
-  accessKeyId: string;
-  secretAccessKey: string;
+  accessKeyId?: string;
+  secretAccessKey?: string;
   region?: string;
   endpoint?: string;
 };
@@ -31,14 +31,12 @@ export const buildS3Storage = ({
 
   // Endpoint example: s3.us-west-2.amazonaws.com
   const finalRegion = region ?? getRegionFromEndpoint(endpoint) ?? 'us-east-1';
+  const credentials = accessKeyId && secretAccessKey ? { accessKeyId, secretAccessKey } : undefined;
 
   const client = new S3Client({
     region: finalRegion,
     endpoint,
-    credentials: {
-      accessKeyId,
-      secretAccessKey,
-    },
+    credentials,
   });
 
   const uploadFile: UploadFile = async (

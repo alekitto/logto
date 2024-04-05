@@ -14,8 +14,8 @@ const templateGuard = z.object({
 export type Template = z.infer<typeof templateGuard>;
 
 export const awsSesConfigGuard = z.object({
-  accessKeyId: z.string(),
-  accessKeySecret: z.string(),
+  accessKeyId: z.string().optional(),
+  accessKeySecret: z.string().optional(),
   region: z.string(),
   emailAddress: z.string().optional(),
   emailAddressIdentityArn: z.string().optional(),
