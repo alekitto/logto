@@ -14,17 +14,6 @@ const awsSesMail: PasswordlessConnectorCase = {
   name: 'AWS Direct Mail',
   // Skip connection test for real-world connectors since it will send request to the 3rd party service
   skipConnectionTest: true,
-  initialFormData: {
-    'formConfig.accessKeyId': 'access-key-id',
-    'formConfig.accessKeySecret': 'access-key-config',
-    'formConfig.region': 'region',
-    'formConfig.emailAddress': 'email-address',
-    'formConfig.emailAddressIdentityArn': 'email-address-identity-arn',
-    'formConfig.feedbackForwardingEmailAddress': 'feedback-forwarding-email-address',
-    'formConfig.feedbackForwardingEmailAddressIdentityArn':
-      'feedback-forwarding-email-address-identity-arn',
-    'formConfig.configurationSetName': 'configuration-set-name',
-  },
   updateFormData: {
     'formConfig.accessKeyId': 'new-access-key-id',
     'formConfig.accessKeySecret': 'new-access-key-config',
@@ -35,11 +24,6 @@ const awsSesMail: PasswordlessConnectorCase = {
     'formConfig.feedbackForwardingEmailAddressIdentityArn':
       'new-feedback-forwarding-email-address-identity-arn',
     'formConfig.configurationSetName': 'new-configuration-set-name',
-  },
-  errorFormData: {
-    'formConfig.accessKeyId': '',
-    'formConfig.accessKeySecret': '',
-    'formConfig.region': '',
   },
 };
 
